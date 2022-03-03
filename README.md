@@ -1,6 +1,10 @@
 # Project Template: React/Rails API
 Studio Ghibli
+<<<<<<< HEAD
 vivian read me
+=======
+gehrig
+>>>>>>> 4ce37bc1a6c5843b6b555156ede868e746102230
 ## Description
 
 This project is scaffolded so that you can build a React frontend and Rails
