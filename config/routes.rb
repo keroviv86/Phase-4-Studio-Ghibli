@@ -3,10 +3,10 @@ Rails.application.routes.draw do
   resources :user_join_films
   resources :films
   resources :users, only: [:index, :create]
-  resources :sessions
+  # resources :sessions
 
 
-  # post "/login", to: "sessions#login"
+  post "/login", to: "sessions#login"
   # destroy "/logout", to: "sessions#logout"
 
   
