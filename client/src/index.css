@@ -11,3 +11,42 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+li {
+  list-style-type: none;
+}
+li:hover {
+  background-color: #ffa2db;
+}
+
+/* NAVBAR */
+.nav{
+  position: center;
+}
+
+.nav {
+ 
+  text-decoration: none;
+  color: #62b4f9;
+  font-weight: bold;
+}
+
+.nav:hover {
+  /* background-color: #915dd1; */
+  color: #f29ffa;
+}
+
+a {
+  color: rgb(221, 157, 213);
+  font-family: helvetica;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+a:active {
+  color: black;
+}
