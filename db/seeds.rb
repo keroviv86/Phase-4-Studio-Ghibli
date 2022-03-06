@@ -8,4 +8,4 @@
 
 puts "🌱 Seeding data..."
 
-u1 = User.create(name: 'Viv', email: "keroviv86@gmail.com", password_digest: "12345", admin: false)
+u1 = User.create(name: 'Viv', email: "keroviv86@gmail.com", password: "12345", admin: false)

@@ -1,59 +1,57 @@
-import React, {useState} from 'react'
+import { useState } from "react";
+import LoginForm from "./LoginForm";
+import SignUpForm from "./SignUpForm";
 
 
-function Login({setIsAuthenticated, setUser}){
-    const [username, setUsername] = useState('')
-    const [password, setPassword] = useState('')
+function Login({ onLogin }) {
+  const [showLogin, setShowLogin] = useState(true);
 
-    const [errors, setErrors] = useState([])
-
-    function onSubmit(e){
-        e.preventDefault()
-        const user = {
-          username: username,
-          password: password, 
-      }
-       
-        fetch(`/login`,{
-          method:'POST',
-          headers:{'Content-Type': 'application/json'},
-          body:JSON.stringify(user)
-        })
-        .then(res => {  
-          if(res.ok){
-          res.json()
-          .then(user=>{
-            setUser(user)
-            setIsAuthenticated(true)
-          })
-          
-        } else {
-          res.json()
-          .then(json => setErrors(json.error))
-        }
-      })
-    }
-    return (
-        <> 
-        <form onSubmit={onSubmit}>
-        <label>
-          Username
-   
-          <input type="text" value={username} onChange={(e) => setUsername(e.target.value)} />
-        </label>
-        <label>
-         Password
-    
-        <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
-        </label>
-       
-        <input type="submit" value="Login!" />
-      </form>
-      {/* {errors?errors.map(e => <div>{e}</div>):null} */}
-        </>
-    )
-
+  return (
+    <div>
+      {showLogin ? (
+        <>
+          <LoginForm onLogin={onLogin} />
   
+          <p>
+            Don't have an account? &nbsp;
+            <button color="secondary" onClick={() => setShowLogin(false)}>
+              Sign Up
+            </button>
+          </p>
+        </>
+      ) : (
+        <>
+          <SignUpForm onLogin={onLogin} />
+         
+          <p>
+            Already have an account? &nbsp;
+            <button color="secondary" onClick={() => setShowLogin(true)}>
+              Log In
+            </button>
+          </p>
+        </>
+      )}
+    </div>
+  );
 }
 
-export default Login
+// const Logo = styled.h1`
+//   font-family: "Permanent Marker", cursive;
+//   font-size: 3rem;
+//   color: deeppink;
+//   margin: 8px 0 16px;
+// `;
+
+// const Wrapper = styled.section`
+//   max-width: 500px;
+//   margin: 40px auto;
+//   padding: 16px;
+// `;
+
+// const Divider = styled.hr`
+//   border: none;
+//   border-bottom: 1px solid #ccc;
+//   margin: 16px 0;
+// `;
+
+export default Login;

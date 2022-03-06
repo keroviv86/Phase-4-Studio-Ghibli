@@ -2,11 +2,14 @@ Rails.application.routes.draw do
   
   resources :user_join_films
   resources :films
-  resources :users, only: [:index, :create]
+  # resources :users, only: [:index, :show, :create]
   # resources :sessions
 
+  post "/login", to: "sessions#create"
+  delete "/logout", to: "sessions#destroy"
 
-  post "/login", to: "sessions#login"
+  post "/signup", to: "users#create"
+  get "/me", to: "users#show"
   # destroy "/logout", to: "sessions#logout"
 
   
