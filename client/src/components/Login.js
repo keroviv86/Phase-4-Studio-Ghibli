@@ -3,15 +3,23 @@ import LoginForm from "./LoginForm";
 import SignUpForm from "./SignUpForm";
 
 
-function Login({ onLogin }) {
+function Login({ onLogin, name, setName, password, setPassword }) {
   const [showLogin, setShowLogin] = useState(true);
+  // const [name, setName] = useState("");
+  // const [password, setPassword] = useState("");
 
   return (
     <div>
 
       {showLogin ? (
         <>
-          <LoginForm onLogin={onLogin} />
+          <LoginForm 
+          onLogin={onLogin}
+          name={name}
+          setName={setName}
+          password={password}
+          setPassword={setPassword}
+          />
   
           <p>
             Don't have an account? &nbsp;
@@ -22,7 +30,13 @@ function Login({ onLogin }) {
         </>
       ) : (
         <>
-          <SignUpForm onLogin={onLogin} />
+          <SignUpForm 
+          onLogin={onLogin}
+          name={name}
+          setName={setName}
+          password={password}
+          setPassword={setPassword} 
+          />
          
           <p>
             Already have an account? &nbsp;

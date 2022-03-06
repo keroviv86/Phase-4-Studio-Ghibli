@@ -6,12 +6,16 @@ class UsersController < ApplicationController
     # end
 
     def show
-        render json: @current_user
-      end
+        if current_user
+            render json: @current_user, status: :ok
+        else
+            render json: "No current user set", status: :unauthorized
+        end
+    end
 
     def create 
         user = User.create!(user_params)
-        session[:user_id] = user.id
+        session[:current_user] = user.id
         render json: user, status: :created
     end 
 
@@ -20,4 +24,6 @@ class UsersController < ApplicationController
     def user_params
         params.permit(:name, :password)
     end 
+
+    
 end
