@@ -2,7 +2,7 @@
 import './App.css';
 import Login from './components/Login.js';
 import Home from './components/Home.js';
-// import LoginAd from './components/LoginAd.js';
+
 import NavBar from './components/NavBar.js';
 import SignUpForm from './components/SignUpForm';
 
@@ -24,20 +24,21 @@ function App() {
           setUser(user);
         });
       }
-    },[]);
-  })
+    });
+  },[])
 
   if (!user) return <Login onLogin={setUser} />;
-  return (
+  // if (!isAuthenticated) return <Login error= {'please login'} setIsAuthenticated={setIsAuthenticated} onLogin={setUser}/>;
+    return (
     <div className="App">
-       <NavBar setIsAuthenticated={setIsAuthenticated} isAuthenticated={isAuthenticated} user={user} setUser={setUser} />
+      <NavBar setIsAuthenticated={setIsAuthenticated} isAuthenticated={isAuthenticated} user={user} setUser={setUser} />
       <Routes>
-      <Route path="/login" element={<Login
-        onLogin={setUser}
-      />}/>
+        <Route path="/login" element={<Login
+          onLogin={setUser}
+        />}/>
         <Route path="/home" element={<Home/>}/>
       </Routes>
-      {isAuthenticated? <SignUpForm/> : <p>Welcome </p>}
+      {/* {isAuthenticated? <p>Welcome </p>: <p>please log in</p>} */}
     </div>
   );
 }
