@@ -12,42 +12,15 @@ code {
     monospace;
 }
 
-li {
-  list-style-type: none;
-}
-li:hover {
-  background-color: #ffa2db;
-}
-
 /* NAVBAR */
-.nav{
-  position: center;
+
+.tab:hover {
+  background-color: #cebbe6;
+  color: #6c5e6d;
 }
 
-.nav {
- 
-  text-decoration: none;
-  color: #62b4f9;
-  font-weight: bold;
-}
 
-.nav:hover {
-  /* background-color: #915dd1; */
-  color: #f29ffa;
-}
-
-a {
-  color: rgb(221, 157, 213);
-  font-family: helvetica;
-  text-decoration: none;
-  text-transform: uppercase;
-}
-
-a:hover {
-  text-decoration: underline;
-}
-
-a:active {
+.tab:active {
   color: black;
 }
 
@@ -60,4 +33,32 @@ input {
   font-size: 1rem;
   line-height: 1.5;
   padding: 4px;
+}
+
+/* home */
+.homephoto {
+ 
+
+  /* Set rules to fill background */
+  min-height: 80%;
+  min-width: 1024px;
+  
+  /* Set up proportionate scaling */
+  width: 100%;
+  height: auto;
+  
+  /* Set up positioning */
+  position: auto;
+  top: 20 ;
+  left: 0;
+}
+
+.title {
+  color: #AAA;
+  font-size: 36px; 
+  font-weight: 400;
+  text-align: center;
+}
+strong {
+  color: #313131;
 }

@@ -63,44 +63,15 @@ function NavBar({isAuthenticated, setIsAuthenticated, user, setUser}) {
     <Box sx={{ width: '100%' }}>
       <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
         <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
-            <Tab label="Home" {...a11yProps(0)} component={Link} to='/home' />
+            <Tab className = "tab" label="Home" {...a11yProps(0)} component={Link} to='/home' />
+            <Tab className = "tab" label="Films" {...a11yProps(0)} component={Link} to='/films' />
             
-            {user?<Tab onClick={logout} label="Logout" {...a11yProps(1)} />:<Tab label="Login" {...a11yProps(2)} component={Link} to='/login' />}
+            {user?<Tab onClick={logout}className = "tab" label="Logout" {...a11yProps(1)} />:<Tab label="Login" {...a11yProps(2)} component={Link} to='/login' />}
             
         </Tabs>
       </Box>
     </Box>
   );
-
-//   return (
-//     <div>
-//         <nav className="nav">
-//             <a href="#/nav">
-//                 <NavLink to="/sign-up" exact >
-//                     Sign-Up
-//                 </NavLink>
-//             </a>{' '} |
-//             <a href="#/nav">
-//                {user? <li onClick={logout}> Logout </li> : 
-//                <NavLink to="/login" exact>
-//                     Login
-//                 </NavLink>} 
-//             </a>{' '} |
-//             <a href="#/nav">
-//                 <NavLink to="/home" exact>
-//                     Home
-//                 </NavLink>
-//             </a>
-//             {isAuthenticated?             
-//             <li>
-//                 <NavLink to="/Films" exact>
-//                    Film
-//                 </NavLink>
-//             </li>:
-//             <p> </p>}
-//         </nav>
-//     </div>
-//   )
 }
 
 export default NavBar;

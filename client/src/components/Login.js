@@ -3,15 +3,24 @@ import LoginForm from "./LoginForm";
 import SignUpForm from "./SignUpForm";
 
 
-function Login({ onLogin }) {
+function Login({ onLogin, name, setName, password, setPassword, setIsAuthenticated }) {
   const [showLogin, setShowLogin] = useState(true);
+  // const [name, setName] = useState("");
+  // const [password, setPassword] = useState("");
 
   return (
     <div>
 
       {showLogin ? (
         <>
-          <LoginForm onLogin={onLogin} />
+          <LoginForm 
+          onLogin={onLogin}
+          name={name}
+          setName={setName}
+          password={password}
+          setPassword={setPassword}
+          setIsAuthenticated={setIsAuthenticated}
+          />
   
           <p>
             Don't have an account? &nbsp;
@@ -22,7 +31,13 @@ function Login({ onLogin }) {
         </>
       ) : (
         <>
-          <SignUpForm onLogin={onLogin} />
+          <SignUpForm 
+          onLogin={onLogin}
+          name={name}
+          setName={setName}
+          password={password}
+          setPassword={setPassword} 
+          />
          
           <p>
             Already have an account? &nbsp;
@@ -36,23 +51,5 @@ function Login({ onLogin }) {
   );
 }
 
-// const Logo = styled.h1`
-//   font-family: "Permanent Marker", cursive;
-//   font-size: 3rem;
-//   color: deeppink;
-//   margin: 8px 0 16px;
-// `;
-
-// const Wrapper = styled.section`
-//   max-width: 500px;
-//   margin: 40px auto;
-//   padding: 16px;
-// `;
-
-// const Divider = styled.hr`
-//   border: none;
-//   border-bottom: 1px solid #ccc;
-//   margin: 16px 0;
-// `;
 
 export default Login;
