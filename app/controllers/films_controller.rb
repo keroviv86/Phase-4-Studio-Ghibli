@@ -6,8 +6,9 @@ class FilmsController < ApplicationController
         render json: response, status: :ok
     end
     def show
-        film = Film.find_by(id:params[:id])
-        render json:film, status: :ok
+        url="https://ghibliapi.herokuapp.com/films/#{params[:id]}"
+        response =RestClient.get(url)
+        render json: response, status: :ok
     end
 
     # def index

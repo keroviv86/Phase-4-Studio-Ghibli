@@ -5,7 +5,7 @@ import {useState, useEffect} from 'react';
 function FilmDetails(){
     const [film, setFilm] = useState(true)
     const {id} = useParams();
-    const filmId = (film.id)
+    
 
     useEffect(() => {
         fetch(`/films/${id}`)
@@ -15,12 +15,12 @@ function FilmDetails(){
           });
     }, [id]);
 
-    console.log(film.title)
-    
+  
+    console.log(film)
 
     return(
         <div className="film-detail">
-            
+            <h1>{}</h1>
             
         </div>
 
