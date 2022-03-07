@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-function LoginForm({ onLogin, name, setName, password, setPassword }) {
+function LoginForm({ onLogin, name, setName, password, setPassword, setIsAuthenticated }) {
   // const [name, setName] = useState("");
   // const [password, setPassword] = useState("");
   const [errors, setErrors] = useState([]);
@@ -21,7 +21,10 @@ function LoginForm({ onLogin, name, setName, password, setPassword }) {
     }).then((r) => {
       setIsLoading(false);
       if (r.ok) {
-        r.json().then((user) => onLogin(user));
+        r.json().then((user) => {
+          onLogin(user)
+          setIsAuthenticated(true)
+        });
       } else {
         r.json().then((err) => setErrors(err.errors));
       }
@@ -43,7 +46,7 @@ function LoginForm({ onLogin, name, setName, password, setPassword }) {
        
         <input type="submit" value="Login!" />
       </form>
-      {/* {errors?errors.map(e => <div>{e}</div>):null} */}
+      {errors?errors.map(e => <div>{e}</div>):null}
         </>
     )
 
