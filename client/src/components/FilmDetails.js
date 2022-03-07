@@ -20,8 +20,15 @@ function FilmDetails(){
 
     return(
         <div className="film-detail">
-            <h1>{}</h1>
-            
+          <h1>{film.title}</h1>
+          <h2>{film.original_title}</h2>
+          <img src={film.movie_banner}/>
+          
+          <p>{film.description}</p>
+          <p>Director: {film.director}</p>
+          <p>Release Date: {film.release_date}</p>
+          <p>Run Time: {film.running_time}</p>
+          <p>Rating: {film.rt_score}%</p>
         </div>
 
 

@@ -1,6 +1,7 @@
 import React from 'react'
 import FilmCard from './FilmCard'
 
+
 function FilmContainer({film}){
     const displayFilm = film.map((film)=>
         <FilmCard
@@ -14,7 +15,9 @@ function FilmContainer({film}){
     )
     return(
         <main className="film-container">
+            
            {displayFilm}
+           
           
         </main>
 

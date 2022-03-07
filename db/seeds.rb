@@ -9,6 +9,7 @@
 puts "🌱 Seeding data..."
 
 u1 = User.create(name: 'Viv', email: "keroviv86@gmail.com", password: "12345", admin: false)
+c1 = UserJoinFilm.create(film_id: "2baf70d1-42bb-4437-b551-e5fed5a87abe", user_id: u1.id, comment: "This film Sucks", rating: 5)
 
 # Film.create ([
 #         {

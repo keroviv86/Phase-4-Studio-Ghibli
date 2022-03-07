@@ -11,9 +11,21 @@ class FilmsController < ApplicationController
         render json: response, status: :ok
     end
 
-    # def index
-    #     render json: Film.all, status: :ok
-    # end
+    def update
+        url="https://ghibliapi.herokuapp.com/films/#{params[:id]}"
+        response =RestClient.get(url)
+        response.update!(film_params)
+        render json: response, status: :ok
+    end
 
+    private 
+
+    def film_params
+        params.permit(:rt_score)
+    end
+
+    
+
+  
   
 end

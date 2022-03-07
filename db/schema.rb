@@ -39,6 +39,8 @@ ActiveRecord::Schema.define(version: 2022_03_03_221439) do
   create_table "user_join_films", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "film_id", null: false
+    t.string "comment"
+    t.integer "rating"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["film_id"], name: "index_user_join_films_on_film_id"
