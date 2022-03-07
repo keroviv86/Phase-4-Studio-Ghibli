@@ -6,6 +6,7 @@ import Home from './components/Home.js';
 import NavBar from './components/NavBar.js';
 import SignUpForm from './components/SignUpForm';
 import FilmContainer from './components/FilmContainer'
+import FilmDetails from './components/FilmDetails'
 
 import {Routes, Route} from "react-router-dom";
 import {useEffect, useState} from 'react'
@@ -15,6 +16,7 @@ function App() {
   const [user, setUser] = useState(null);
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
+  const [film, setFilm] = useState([])
 
 
   useEffect(() => {
@@ -28,7 +30,26 @@ function App() {
         });
       }
     });
+    fetch('/films')
+    .then(res=>res.json())
+    .then(data=> setFilm(data))
+
   },[])
+
+  // useEffect(()=> {
+  //   fetch('http://localhost:3000/films')
+  //   .then(res=>res.json())
+  //   .then(data=> console.log(data))
+  // },[])
+
+ 
+//   useEffect(() => {
+//     const url = "https://ghibliapi.herokuapp.com/films";
+
+//     fetch(url)
+//         .then(response => response.json())
+//         .then(response => console.log(response))
+// }, []);
 
   if (!user) return <Login
    onLogin={setUser}
@@ -51,8 +72,10 @@ function App() {
           setPassword={setPassword}
           setIsAuthenticated={setIsAuthenticated}
         />}/>
+        <Route path="/films/:id" element={<FilmDetails/>}/>
         <Route path="/home" element={<Home name={name} user={user}/>}/>
-        <Route path="/films" element={<FilmContainer/>}/>
+        <Route path="/films" element={<FilmContainer film={film}/>}/>
+        
       </Routes>
       {/* {isAuthenticated? <p>Welcome </p>: <p>please log in</p>} */}
     </div>

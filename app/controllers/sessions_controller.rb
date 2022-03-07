@@ -5,7 +5,6 @@ class SessionsController < ApplicationController
         user = User.find_by(name:params[:name])
        
         if user&.authenticate(params[:password])
-            # current_user allows current user to persist when page reloads
             session[:current_user] = user.id
             render json: user, status: :ok
         else 
