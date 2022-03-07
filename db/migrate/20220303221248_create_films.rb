@@ -11,7 +11,7 @@ class CreateFilms < ActiveRecord::Migration[6.1]
       t.string :producer
       t.integer :release_date
       t.integer :running_time
-      t.integer :rt_score
+      t.string :rt_score
       t.string :people
       t.string :species
       t.string :locations
