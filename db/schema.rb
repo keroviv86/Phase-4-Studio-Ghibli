@@ -18,7 +18,9 @@ ActiveRecord::Schema.define(version: 2022_03_03_221439) do
   create_table "films", force: :cascade do |t|
     t.string "title"
     t.string "original_title"
+    t.string "original_title_romanised"
     t.string "image"
+    t.string "movie_banner"
     t.string "description"
     t.string "director"
     t.string "producer"
@@ -27,6 +29,9 @@ ActiveRecord::Schema.define(version: 2022_03_03_221439) do
     t.integer "rt_score"
     t.string "people"
     t.string "species"
+    t.string "locations"
+    t.string "vehicles"
+    t.string "url"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

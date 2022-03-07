@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   
   resources :user_join_films
   resources :films
-  # resources :users, only: [:index, :show, :create]
+  resources :users, only: [:index]
   # resources :sessions
 
   post "/login", to: "sessions#login"

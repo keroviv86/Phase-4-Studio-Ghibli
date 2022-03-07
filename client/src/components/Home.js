@@ -11,4 +11,4 @@ function Home({name, user}){
     )
 }
 
-export default Home
+export default Home;
