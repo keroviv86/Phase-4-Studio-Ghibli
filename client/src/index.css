@@ -70,8 +70,12 @@ strong {
 }
 
 .film-card{
-
   padding: 16px 8px;
+}
+
+.film-card:hover{
+  transform: rotate(5deg);
+  transition: 0.5s
 }
 
 

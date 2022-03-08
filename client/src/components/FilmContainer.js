@@ -2,8 +2,8 @@ import React from 'react'
 import FilmCard from './FilmCard'
 
 
-function FilmContainer({film}){
-    const displayFilm = film.map((film)=>
+function FilmContainer({allFilms, setSearchFilm}){
+    const displayFilm = allFilms.map((film)=>
         <FilmCard
             id = {film.id}
             key= {film.id}
@@ -14,9 +14,22 @@ function FilmContainer({film}){
     
     )
     return(
-        <main className="film-container">
-            
-           {displayFilm}
+        <main>
+            <div>
+                <form>
+                    <input 
+                    type="search"
+                    placeholder="Search for film"
+                    required
+                    onChange={(e)=> setSearchFilm(e.target.value)}
+                    />
+                </form>
+
+            </div>
+            <div className="film-container">
+                {displayFilm}
+            </div>
+         
            
           
         </main>
