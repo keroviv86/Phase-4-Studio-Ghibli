@@ -1,7 +1,7 @@
 import React from 'react'
 import {useParams} from 'react-router-dom';
 import {useState, useEffect} from 'react';
-
+import Comments from './Comments.js'
 function FilmDetails(){
     const [film, setFilm] = useState(true)
     const {id} = useParams();
@@ -16,11 +16,11 @@ function FilmDetails(){
     }, [id]);
 
   
-    
 
-    const ratingArray = film.user_join_films
 
-    console.log(ratingArray)
+    const comments = film['user_join_films'].map((film)=>(
+        film.comment
+    ))
     
    
 
@@ -34,6 +34,10 @@ function FilmDetails(){
           <p>Director: {film.director}</p>
           <p>Release Date: {film.release_date}</p>
           <p>Run Time: {film.running_time}</p>
+
+          <h1>COMMENTS</h1>
+          <Comments/>
+          <p>{comments}</p>
           
           
         </div>
