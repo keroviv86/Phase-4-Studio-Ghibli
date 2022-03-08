@@ -5,6 +5,7 @@ import Comments from './Comments.js'
 function FilmDetails(){
     const [film, setFilm] = useState(true)
     const {id} = useParams();
+    const [comments, setComments] = useState(true)
     
 
     useEffect(() => {
@@ -12,17 +13,11 @@ function FilmDetails(){
           .then((r) => r.json())
           .then((film) => {
             setFilm(film);
-          });
-    }, [id]);
-
-  
-
-
-    const comments = film['user_join_films'].map((film)=>(
+            setComments(film['user_join_films'].map((film)=>(
         film.comment
-    ))
-    
-   
+    )))
+          });
+    }, [id]);   
 
     return(
         <div className="film-detail">
