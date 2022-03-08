@@ -16,22 +16,28 @@ function FilmDetails(){
     }, [id]);
 
   
-    console.log(film)
+    
+
+    const ratingArray = film.user_join_films
+
+    console.log(ratingArray)
+    
+   
 
     return(
         <div className="film-detail">
           <h1>{film.title}</h1>
           <h2>{film.original_title}</h2>
-          <img src={film.movie_banner} alt="banner"/>
+          <img src={film.image} alt="banner"/>
           
           <p>{film.description}</p>
           <p>Director: {film.director}</p>
           <p>Release Date: {film.release_date}</p>
           <p>Run Time: {film.running_time}</p>
-          <p>Rating: {film.rt_score}%</p>
+          
+          
         </div>
-
-
+        
     )
 }
 
