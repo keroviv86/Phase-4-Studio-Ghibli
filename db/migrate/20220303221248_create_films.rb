@@ -17,7 +17,6 @@ class CreateFilms < ActiveRecord::Migration[6.1]
       t.string :locations
       t.string :vehicles
       t.string :url
-
       t.timestamps
     end
   end
