@@ -17,6 +17,7 @@ function App() {
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
   const [film, setFilm] = useState([])
+  const [searchFilm, setSearchFilm] = useState("")
 
 
   useEffect(() => {
@@ -36,20 +37,11 @@ function App() {
 
   },[])
 
-  // useEffect(()=> {
-  //   fetch('http://localhost:3000/films')
-  //   .then(res=>res.json())
-  //   .then(data=> console.log(data))
-  // },[])
+  const allFilms = [...film]
+  .filter((items)=>{
+    return items.title.toLowerCase().includes(searchFilm.toLowerCase());
+  })
 
- 
-//   useEffect(() => {
-//     const url = "https://ghibliapi.herokuapp.com/films";
-
-//     fetch(url)
-//         .then(response => response.json())
-//         .then(response => console.log(response))
-// }, []);
 
   if (!user) return <Login
    onLogin={setUser}
@@ -74,7 +66,7 @@ function App() {
         />}/>
         <Route path="/films/:id" element={<FilmDetails/>}/>
         <Route path="/home" element={<Home name={name} user={user}/>}/>
-        <Route path="/films" element={<FilmContainer film={film}/>}/>
+        <Route path="/films" element={<FilmContainer allFilms={allFilms} setSearchFilm={setSearchFilm}/>}/>
         
       </Routes>
       {/* {isAuthenticated? <p>Welcome </p>: <p>please log in</p>} */}

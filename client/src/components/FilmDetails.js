@@ -22,7 +22,7 @@ function FilmDetails(){
         <div className="film-detail">
           <h1>{film.title}</h1>
           <h2>{film.original_title}</h2>
-          <img src={film.movie_banner}/>
+          <img src={film.movie_banner} alt="banner"/>
           
           <p>{film.description}</p>
           <p>Director: {film.director}</p>
