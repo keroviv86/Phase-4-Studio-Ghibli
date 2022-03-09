@@ -1,10 +1,10 @@
 import React, {useState} from "react";
 
-function Comments({handleAddComment, film_id}){
+function SubmitComments({handleAddComment}){
     const [newComment, setNewComment]= useState('')
     function handleSubmit(e){
         e.preventDefault();
-        handleAddComment(newComment, film_id);
+        handleAddComment(newComment);
     }
    
     return(
@@ -21,4 +21,4 @@ function Comments({handleAddComment, film_id}){
     )
 }
 
-export default Comments
+export default SubmitComments

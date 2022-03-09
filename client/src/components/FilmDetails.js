@@ -1,10 +1,10 @@
 import React from 'react'
 import {useParams} from 'react-router-dom';
 import {useState, useEffect} from 'react';
-import Comments from './Comments.js'
+import SubmitComments from './SubmitComments.js'
 import CommentContainer from './CommentContainer.js'
 
-function FilmDetails({handleAddComment,handleDeleteComment, username, user}){
+function FilmDetails({handleAddComment,handleDeleteComment}){
     const [currentFilm, setCurrentFilm] = useState('')
     const {id} = useParams();
     const [reviews, setReviews]= useState([])
@@ -19,7 +19,6 @@ function FilmDetails({handleAddComment,handleDeleteComment, username, user}){
           });
     }, [id]);  
 
-    
     function addComment(comment) {
         handleAddComment(comment, currentFilm.id)
     }
@@ -38,18 +37,9 @@ function FilmDetails({handleAddComment,handleDeleteComment, username, user}){
           <p>Director: {currentFilm.director}</p>
           <p>Release Date: {currentFilm.release_date}</p>
           <p>Run Time: {currentFilm.running_time}</p>
-
           <h1>COMMENTS</h1>
-          <Comments handleAddComment={addComment} film_id={currentFilm.id} key={currentFilm.id}/>
-          {/* <CommentContainer id ={comments} comments={comments} /> */}
-          <ul>
-          {reviews.map((review)=> (
-            <>
-                 <li>{review.comment} - {review.user_name} <button onClick={() => handleDeleteComment(review.id)}>X</button></li> 
-            </>
-            ))} 
-          </ul>          
-          
+          <SubmitComments handleAddComment={addComment} film_id={currentFilm.id} key={currentFilm.id}/>
+          <CommentContainer id={1} reviews={reviews} handleDeleteComment={handleDeleteComment} />         
         </div>
         
     )

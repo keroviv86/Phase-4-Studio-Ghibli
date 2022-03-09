@@ -4,7 +4,6 @@ import Login from './components/Login.js';
 import Home from './components/Home.js';
 
 import NavBar from './components/NavBar.js';
-import SignUpForm from './components/SignUpForm';
 import FilmContainer from './components/FilmContainer'
 import FilmDetails from './components/FilmDetails'
 
@@ -18,15 +17,15 @@ function App() {
   const [password, setPassword] = useState("");
   const [film, setFilm] = useState([])
   const [searchFilm, setSearchFilm] = useState("")
-  const [removeRequest, setRemoveRequest] = useState(false);
+  const [reviewsModified, setReviewsModified] = useState(false);
 
-  function handleRemoveRoom(id) {
+  function handleRemoveReview(id) {
     fetch(`/user_join_films/${id}`, {
       method: "DELETE",
       headers: {
         'Content-Type': 'application/json'
       }
-    }).then(setRemoveRequest(!removeRequest))
+    }).then(setReviewsModified(!reviewsModified))
   }
 
 
@@ -53,8 +52,8 @@ function App() {
   })
 
 
-  function handleAddComment(newcomment, film_id){
-    console.log(newcomment)
+  function handleAddComment(newComment, film_id){
+    console.log(newComment)
     console.log(user['id'])
     console.log(film_id)
     fetch('/user_join_films', { 
@@ -65,7 +64,7 @@ function App() {
       body: JSON.stringify({
         film_id: film_id,
         user_id: user['id'], 
-        comment: newcomment,
+        comment: newComment,
         rating: 10
       })
     })
@@ -94,7 +93,7 @@ function App() {
           setPassword={setPassword}
           setIsAuthenticated={setIsAuthenticated}
         />}/>
-        <Route path="/films/:id" element={<FilmDetails handleAddComment={handleAddComment} handleDeleteComment={handleRemoveRoom} username={name} user={user}/>}/>
+        <Route path="/films/:id" element={<FilmDetails handleAddComment={handleAddComment} handleDeleteComment={handleRemoveReview} username={name} user={user}/>}/>
         <Route path="/home" element={<Home name={name} user={user}/>}/>
         <Route path="/films" element={<FilmContainer allFilms={allFilms} setSearchFilm={setSearchFilm}/>}/>
         
