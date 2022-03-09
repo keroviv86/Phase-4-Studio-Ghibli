@@ -16,7 +16,7 @@ class FilmsController < ApplicationController
     end
 
     def show
-        film = Film.find(params[:id])
+        film = Film.find_by(id: params[:id])
         render json: film, status: :ok
     end
 
