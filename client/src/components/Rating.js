@@ -6,36 +6,47 @@ function Rating({review, reviewRating, handleChangeRating}) {
     function changeRating(newRating) {
         setRating(newRating)
         console.log(rating)
-   
-        // const updateRating = {
-        //     rating: rating
-        // }
-        // fetch(`/user_join_films/${review.id}`, {
-        //     method: "PATCH",
-        //     headers: {
-        //       'Content-Type': 'application/json'
-        //     },
-        //     body: JSON.stringify(updateRating)
-        //   }).then(res=>res.json())
-        //   .then((rating) =>handleChangeRating(rating))
-        handleChangeRating(rating)
     }
+
+    function handSubmit(e){
+        e.preventDefault();
+        fetch(`/user_join_films/${review.id}`, {
+            method: "PATCH",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                rating: rating 
+            }),
+        })
+        .then((r) => r.json())
+    }
+    
+
 
 
     let ratingButtons = []
 
     for(let i = 0; i < rating; i++) {
-        ratingButtons.push(<button onClick={() => changeRating(i+1)}>*</button>)
+        ratingButtons.push(<button onClick={() => changeRating(i+1)}>★</button>)
     }
 
     for(let i = rating; i < 10; i++) {
-        ratingButtons.push(<button onClick={() => changeRating(i+1)}>o</button>)
+        ratingButtons.push(<button onClick={() => changeRating(i+1)}>-</button>)
     }
 
     return (
+        <div>
+        <form onSubmit={handSubmit}>
         <li>
-        {ratingButtons}
+            {ratingButtons}
         </li>
+        <button
+              type='submit'
+              name='submit'>Submit Rating
+            </button>
+        </form>
+        </div>
     )
 }
 
