@@ -14,7 +14,9 @@ class UserJoinFilmsController < ApplicationController
     end
 
     def destroy
-        comment = UserJoinFilm.destroy(find_comment)
+        comment = UserJoinFilm.find(params[:id])
+        comment.destroy
+        head :no_content
     end
     
     private

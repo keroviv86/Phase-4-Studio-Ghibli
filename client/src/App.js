@@ -18,6 +18,16 @@ function App() {
   const [password, setPassword] = useState("");
   const [film, setFilm] = useState([])
   const [searchFilm, setSearchFilm] = useState("")
+  const [removeRequest, setRemoveRequest] = useState(false);
+
+  function handleRemoveRoom(id) {
+    fetch(`/user_join_films/${id}`, {
+      method: "DELETE",
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    }).then(setRemoveRequest(!removeRequest))
+  }
 
 
   useEffect(() => {
@@ -61,11 +71,6 @@ function App() {
     })
   }
 
-  function handleDeleteComment(id){
-    console.log(id);
-  }
-
-  console.log(user)
   
 
   if (!user) return <Login
@@ -89,7 +94,7 @@ function App() {
           setPassword={setPassword}
           setIsAuthenticated={setIsAuthenticated}
         />}/>
-        <Route path="/films/:id" element={<FilmDetails handleAddComment={handleAddComment} handleDeleteComment={handleDeleteComment} username={name} user={user}/>}/>
+        <Route path="/films/:id" element={<FilmDetails handleAddComment={handleAddComment} handleDeleteComment={handleRemoveRoom} username={name} user={user}/>}/>
         <Route path="/home" element={<Home name={name} user={user}/>}/>
         <Route path="/films" element={<FilmContainer allFilms={allFilms} setSearchFilm={setSearchFilm}/>}/>
         
