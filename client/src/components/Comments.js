@@ -1,18 +1,23 @@
 import React, {useState} from "react";
 
-function Comments(){
+function Comments({handleAddComment, film_id}){
+    const [newComment, setNewComment]= useState('')
+    function handleSubmit(e){
+        e.preventDefault();
+        handleAddComment(newComment, film_id);
+    }
+   
     return(
         <>
-        <form>
+        <form onSubmit= {handleSubmit}>
          <label>
             Add Comment:
    
-            <input type="text"   />
+            <input type="text" value= {newComment} onChange={(e)=>setNewComment(e.target.value)}  />
          </label>
          <input type="submit" value="Submit" />
         </form>
         </>
-        
     )
 }
 

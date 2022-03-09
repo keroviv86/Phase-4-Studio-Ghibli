@@ -31,10 +31,10 @@ function App() {
         });
       }
     });
+
     fetch('/films')
     .then(res=>res.json())
     .then(data=> setFilm(data))
-
   },[])
 
   const allFilms = [...film]
@@ -42,6 +42,31 @@ function App() {
     return items.title.toLowerCase().includes(searchFilm.toLowerCase());
   })
 
+
+  function handleAddComment(newcomment, film_id){
+    console.log(newcomment)
+    console.log(user['id'])
+    console.log(film_id)
+    fetch('/user_join_films', { 
+      method: 'POST',
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        film_id: film_id,
+        user_id: user['id'], 
+        comment: newcomment,
+        rating: 10
+      })
+    })
+  }
+
+  function handleDeleteComment(id){
+    console.log(id);
+  }
+
+  console.log(user)
+  
 
   if (!user) return <Login
    onLogin={setUser}
@@ -64,7 +89,7 @@ function App() {
           setPassword={setPassword}
           setIsAuthenticated={setIsAuthenticated}
         />}/>
-        <Route path="/films/:id" element={<FilmDetails/>}/>
+        <Route path="/films/:id" element={<FilmDetails handleAddComment={handleAddComment} handleDeleteComment={handleDeleteComment} username={name} user={user}/>}/>
         <Route path="/home" element={<Home name={name} user={user}/>}/>
         <Route path="/films" element={<FilmContainer allFilms={allFilms} setSearchFilm={setSearchFilm}/>}/>
         
