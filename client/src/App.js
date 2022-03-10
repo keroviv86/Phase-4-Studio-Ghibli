@@ -45,23 +45,23 @@ function App() {
     })
 
 
-  function handleAddComment(newComment, film_id) {
-    console.log(newComment)
-    console.log(user['id'])
-    console.log(film_id)
-    fetch('/user_join_films', {
-      method: 'POST',
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-        film_id: film_id,
-        user_id: user['id'],
-        comment: newComment,
-        rating: 0
-      })
-    })
-  }
+  // function handleAddComment(newComment, film_id) {
+  //   console.log(newComment)
+  //   console.log(user['id'])
+  //   console.log(film_id)
+  //   fetch('/user_join_films', {
+  //     method: 'POST',
+  //     headers: {
+  //       "Content-Type": "application/json"
+  //     },
+  //     body: JSON.stringify({
+  //       film_id: film_id,
+  //       user_id: user['id'],
+  //       comment: newComment,
+  //       rating: 0
+  //     })
+  //   })
+  // }
 
 
 
@@ -99,7 +99,7 @@ function App() {
           setIsAuthenticated={setIsAuthenticated}
         />} />
         <Route path="/comment/:id" element={<FullComments />} />
-        <Route path="/films/:id" element={<FilmDetails handleAddComment={handleAddComment}  username={name} user={user} newComment={newComment} setNewComment = {setNewComment} />} />
+        <Route path="/films/:id" element={<FilmDetails user={user}  username={name} newComment={newComment} setNewComment = {setNewComment} />} />
         <Route path="/home" element={<Home name={name} user={user} />} />
         <Route path="/films" element={<FilmContainer allFilms={allFilms} setSearchFilm={setSearchFilm} />} />
 

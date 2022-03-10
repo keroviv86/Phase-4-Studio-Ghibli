@@ -1,11 +1,11 @@
 import React, {useState} from "react";
 
-function SubmitComments({handleAddComment, newComment, setNewComment}){
+function SubmitComments({film_id, handleAddComment, newComment, setNewComment}){
     // const [newComment, setNewComment]= useState('')
     
     function handleSubmit(e){
         e.preventDefault();
-        handleAddComment(newComment);
+        handleAddComment(newComment, film_id);
     }
    
     return(

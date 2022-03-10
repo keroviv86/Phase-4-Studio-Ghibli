@@ -3,6 +3,4 @@ class UserJoinFilmSerializer < ActiveModel::Serializer
   has_one :user
   has_one :film
 
-  
-  
 end
