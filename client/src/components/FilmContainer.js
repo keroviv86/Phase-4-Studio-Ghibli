@@ -16,10 +16,12 @@ function FilmContainer({allFilms, setSearchFilm}){
     return(
         <main>
             <div>
-                <form>
-                    <input 
+                <h1 className="title">Studio<strong>Ghibli</strong>Database</h1>
+                <form className= "search-box">
+                    <input
+                    className = "search-input" 
                     type="search"
-                    placeholder="Search for film"
+                    placeholder="Search for film..."
                     required
                     onChange={(e)=> setSearchFilm(e.target.value)}
                     />

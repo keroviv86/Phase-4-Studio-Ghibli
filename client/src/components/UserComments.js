@@ -4,8 +4,6 @@ import {useEffect, useState} from 'react'
 function UserComments({user}){
     const [comments, setComments] = useState([])
 
-    
-    
     useEffect(() => {
     fetch("/comments")
       .then((r) => r.json())

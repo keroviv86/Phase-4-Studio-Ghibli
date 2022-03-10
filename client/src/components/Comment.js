@@ -17,9 +17,16 @@ function Comment({review, handleDeleteComment, handleChangeRating}) {
     return (
         <>
         {review.user_name}: <br/>
-        {review.comment.substring(0,4)} ... <button onClick={() => handleDeleteComment(review.id)}>X</button>  <br/> 
+        {review.comment.substring(0,10)} ... <button onClick={() => handleDeleteComment(review.id)}>X</button>  
+        <br/> 
+        <p>
+        <Link className="seemorebutton" to={`/comment/${review.id}`} >Full Comment</Link>
+        </p>
+        <p>
         <Rating review = {review} reviewRating={review.rating} handleChangeRating={handleChangeRating}/><br/><br/>
-        <Link to={`/comment/${review.id}`} className="seemorebutton">See More</Link>
+        </p>
+      
+        
         </>
     )
 }
