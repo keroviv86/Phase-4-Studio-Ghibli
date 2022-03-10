@@ -9,6 +9,7 @@ import FilmDetails from './components/FilmDetails'
 
 import { Routes, Route } from "react-router-dom";
 import { useEffect, useState } from 'react'
+import FullComments from './components/FullComments.js'
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -18,6 +19,7 @@ function App() {
   const [film, setFilm] = useState([])
   const [searchFilm, setSearchFilm] = useState("")
   const [reviewsModified, setReviewsModified] = useState(false);
+  
 
   function handleRemoveReview(id) {
     fetch(`/user_join_films/${id}`, {
@@ -94,6 +96,7 @@ function App() {
           setPassword={setPassword}
           setIsAuthenticated={setIsAuthenticated}
         />} />
+        <Route path="/comment/:id" element={<FullComments />} />
         <Route path="/films/:id" element={<FilmDetails handleAddComment={handleAddComment} handleDeleteComment={handleRemoveReview} username={name} user={user} />} />
         <Route path="/home" element={<Home name={name} user={user} />} />
         <Route path="/films" element={<FilmContainer allFilms={allFilms} setSearchFilm={setSearchFilm} />} />
