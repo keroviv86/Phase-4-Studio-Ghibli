@@ -7,6 +7,7 @@ import NavBar from './components/NavBar.js';
 import FilmContainer from './components/FilmContainer'
 import FilmDetails from './components/FilmDetails'
 
+
 import { Routes, Route } from "react-router-dom";
 import { useEffect, useState } from 'react'
 import FullComments from './components/FullComments.js'
@@ -18,18 +19,8 @@ function App() {
   const [password, setPassword] = useState("");
   const [film, setFilm] = useState([])
   const [searchFilm, setSearchFilm] = useState("")
-  const [reviewsModified, setReviewsModified] = useState(false);
-  
-
-  function handleRemoveReview(id) {
-    fetch(`/user_join_films/${id}`, {
-      method: "DELETE",
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    }).then(setReviewsModified(!reviewsModified))
-  }
-
+  // const [reviewsModified, setReviewsModified] = useState(false);
+  const [newComment, setNewComment]= useState('')
 
   useEffect(() => {
     fetch("/authorized_user")
@@ -74,6 +65,17 @@ function App() {
 
 
 
+  // function handleRemoveReview(id) {
+  //   fetch(`/user_join_films/${id}`, {
+  //     method: "DELETE",
+  //     headers: {
+  //       'Content-Type': 'application/json'
+  //     }
+  //   }).then(setReviewsModified(!reviewsModified))
+  // }
+
+
+
   if (!user) return <Login
     onLogin={setUser}
     name={name}
@@ -97,7 +99,7 @@ function App() {
           setIsAuthenticated={setIsAuthenticated}
         />} />
         <Route path="/comment/:id" element={<FullComments />} />
-        <Route path="/films/:id" element={<FilmDetails handleAddComment={handleAddComment} handleDeleteComment={handleRemoveReview} username={name} user={user} />} />
+        <Route path="/films/:id" element={<FilmDetails handleAddComment={handleAddComment}  username={name} user={user} newComment={newComment} setNewComment = {setNewComment} />} />
         <Route path="/home" element={<Home name={name} user={user} />} />
         <Route path="/films" element={<FilmContainer allFilms={allFilms} setSearchFilm={setSearchFilm} />} />
 

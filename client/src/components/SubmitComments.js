@@ -1,7 +1,8 @@
 import React, {useState} from "react";
 
-function SubmitComments({handleAddComment}){
-    const [newComment, setNewComment]= useState('')
+function SubmitComments({handleAddComment, newComment, setNewComment}){
+    // const [newComment, setNewComment]= useState('')
+    
     function handleSubmit(e){
         e.preventDefault();
         handleAddComment(newComment);

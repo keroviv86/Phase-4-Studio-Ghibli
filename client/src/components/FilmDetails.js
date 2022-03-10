@@ -4,7 +4,7 @@ import {useState, useEffect} from 'react';
 import SubmitComments from './SubmitComments.js'
 import CommentContainer from './CommentContainer.js'
 
-function FilmDetails({handleAddComment,handleDeleteComment}){
+function FilmDetails({handleAddComment,newComment, setNewComment}){
     const [currentFilm, setCurrentFilm] = useState('')
     const {id} = useParams();
     const [reviews, setReviews]= useState([])
@@ -22,8 +22,15 @@ function FilmDetails({handleAddComment,handleDeleteComment}){
     function addComment(comment) {
         handleAddComment(comment, currentFilm.id)
     }
+    function handleDeleteComment(id){
+      const itemToDelete = reviews.filter((comment)=>(
+        (comment.id !== id)
+      ))
+      setReviews(itemToDelete)
 
-    console.log(reviews)
+    }
+  
+
     
 
     return(
@@ -38,7 +45,7 @@ function FilmDetails({handleAddComment,handleDeleteComment}){
           <p>Release Date: {currentFilm.release_date}</p>
           <p>Run Time: {currentFilm.running_time}</p>
           <h1>COMMENTS</h1>
-          <SubmitComments handleAddComment={addComment} film_id={currentFilm.id} key={currentFilm.id}/>
+          <SubmitComments handleAddComment={addComment} film_id={currentFilm.id} key={currentFilm.id} newComment={newComment} setNewComment={setNewComment}/>
           <CommentContainer id={1} reviews={reviews} handleDeleteComment={handleDeleteComment} />         
         </div>
         

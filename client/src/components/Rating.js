@@ -28,22 +28,25 @@ function Rating({review, reviewRating, handleChangeRating}) {
     let ratingButtons = []
 
     for(let i = 0; i < rating; i++) {
-        ratingButtons.push(<button onClick={() => changeRating(i+1)}>★</button>)
+        ratingButtons.push(<button className = "like" onClick={() => changeRating(i+1)}>❤️</button>)
     }
 
     for(let i = rating; i < 10; i++) {
-        ratingButtons.push(<button onClick={() => changeRating(i+1)}>-</button>)
+        ratingButtons.push(<button className = "dislike" onClick={() => changeRating(i+1)}>♡</button>)
     }
 
     return (
         <div>
         <form onSubmit={handSubmit}>
-        <li>
-            {ratingButtons}
-        </li>
+            <p>
+                {ratingButtons}
+            </p>
+       
         <button
-              type='submit'
-              name='submit'>Submit Rating
+            className= "submit"
+            type='submit'
+            name='submit'>
+            Submit Rating
             </button>
         </form>
         </div>
