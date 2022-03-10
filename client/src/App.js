@@ -65,7 +65,7 @@ function App() {
         film_id: film_id,
         user_id: user['id'],
         comment: newComment,
-        rating: 10
+        rating: 0
       })
     })
   }
