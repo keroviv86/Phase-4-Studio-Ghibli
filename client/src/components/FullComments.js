@@ -15,9 +15,13 @@ function FullComments(){
     }, [id]);  
 
     console.log(comment)
-
+    // document.body.insertAdjacentHTML("afterbegin", "<p>Hello,<Br/>World!</p>");  
     return (
-        <div>{comment.comment}</div>
+      <div>
+        <p>{comment.comment}</p>
+        <link href="https://fonts.googleapis.com/css?family=Baloo+2:400,800&display=swap" rel="stylesheet"></link>
+      </div>
+        
     )
 }
 

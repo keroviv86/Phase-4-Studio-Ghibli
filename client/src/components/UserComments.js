@@ -26,8 +26,15 @@ function UserComments({user}){
 
   console.log(allComments)
 
+//   document.body.insertAdjacentHTML("afterbegin", "<p>Hello,<Br/>World!</p>");  
+    return (
+    <div>
+      <p>{allComments}</p>
+     
+    </div> 
+    )
+    
   
-    return <div>{allComments}</div>
 }
 
 export default UserComments;

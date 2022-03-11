@@ -38,9 +38,9 @@ function Rating({review, reviewRating, handleChangeRating}) {
     return (
         <div>
         <form onSubmit={handSubmit}>
-            <p>
+        
                 {ratingButtons}
-            </p>
+            
        
         <button
             className= "submit"

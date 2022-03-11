@@ -48,12 +48,9 @@ function FilmDetails({newComment, setNewComment, user}){
         rating: 0
       })
     }).then(refreshReviews)
+    setNewComment("")
+  }
 
-
-
-  
-
-    
 
     return(
         <div className="film-detail">
