@@ -1,9 +1,9 @@
 # Project Template: React/Rails API
 Studio Ghibli
-<<<<<<< HEAD
-vivian read me
-=======
-gehrig
+- User can log in/out of applcation
+- User can add/update comment and rate each film
+- User and few and learn more about individual film
+
 >>>>>>> 4ce37bc1a6c5843b6b555156ede868e746102230
 ## Description
 
