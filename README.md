@@ -4,7 +4,8 @@ Studio Ghibli
 - User can add/update comment and rate each film
 - User and few and learn more about individual film
 
->>>>>>> 4ce37bc1a6c5843b6b555156ede868e746102230
+## Project Wireframe
+ ![WireFrame](wireframe.png)
 ## Description
 
 This project is scaffolded so that you can build a React frontend and Rails
