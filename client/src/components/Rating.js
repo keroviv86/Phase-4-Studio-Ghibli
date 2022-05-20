@@ -1,50 +1,34 @@
-import {React, useState} from 'react';
+import { React } from "react";
 
-function Rating({review, reviewRating, handleChangeRating}) {
-    const [rating, setRating] = useState(reviewRating)
-    
-    function changeRating(newRating) {
-        setRating(newRating)
-        console.log(rating)
+function Rating({ reviewRating, setReviewRating }) {
+  function changeRating(newRating) {
+    setReviewRating(newRating);
+  }
+
+  function generateRatingButtons() {
+    let ratingButtons = [];
+
+    for (let i = 0; i < reviewRating; i++) {
+      ratingButtons.push(
+        <button className="like" onClick={() => changeRating(i + 1)} key={i}>
+          ❤️
+        </button>
+      );
     }
 
-    function handSubmit(e){
-        e.preventDefault();
-        fetch(`/reviews/${review.id}`, {
-            method: "PATCH",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-                rating: rating 
-            }),
-        })
-        .then((r) => r.json())
+    for (let i = reviewRating; i < 10; i++) {
+      ratingButtons.push(
+        <button className="dislike" onClick={() => changeRating(i + 1)} key={i}>
+          ♡
+        </button>
+      );
     }
-    
-    let ratingButtons = []
+    return ratingButtons;
+  }
 
-    for(let i = 0; i < rating; i++) {
-        ratingButtons.push(<button className = "like" onClick={() => changeRating(i+1)}>❤️</button>)
-    }
+  let buttons = generateRatingButtons();
 
-    for(let i = rating; i < 10; i++) {
-        ratingButtons.push(<button className = "dislike" onClick={() => changeRating(i+1)}>♡</button>)
-    }
-
-    return (
-        <div>
-        <form onSubmit={handSubmit}>
-                {ratingButtons}      
-        <button
-            className= "submit"
-            type='submit'
-            name='submit'>
-            Submit Rating
-            </button>
-        </form>
-        </div>
-    )
+  return <div>{buttons}</div>;
 }
 
 export default Rating;

@@ -1,8 +1,7 @@
 import React from "react";
-import Rating from "./Rating.js";
 import { Link } from "react-router-dom";
 
-function Comment({ review, handleDeleteComment, handleChangeRating }) {
+function Comment({ review, handleDeleteComment }) {
   // function handleChangeRating(rating) {
   //     console.log(review)
   //     console.log(rating.id)
@@ -12,26 +11,16 @@ function Comment({ review, handleDeleteComment, handleChangeRating }) {
   //     // console.log(review.id)
 
   // }
-
   return (
     <>
-      {review.user_name}: <br />
-      {review.comment.substring(0, 20)} ...{" "}
-      <button onClick={() => handleDeleteComment(review.id)}>X</button>
       <br />
       <p>
+        {review.user.name} :      {review.comment.substring(0, 20)} ... <br />
+        <br />
         <Link className="seemorebutton" to={`/comment/${review.id}`}>
-          Full Comment
+          Read Full Review
         </Link>
-      </p>
-      <p>
-        <Rating
-          review={review}
-          reviewRating={review.rating}
-          handleChangeRating={handleChangeRating}
-        />
-        <br />
-        <br />
+        <button onClick={() => handleDeleteComment(review.id)}>X</button>
       </p>
     </>
   );

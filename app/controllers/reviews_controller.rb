@@ -11,7 +11,7 @@ class ReviewsController < ApplicationController
 
     def create
         review = Review.create!(join_params)
-        render json: render, status: :created
+        render json: review, status: :created
     end
 
     def destroy
@@ -26,6 +26,12 @@ class ReviewsController < ApplicationController
         render json: rating, status: :ok
     end
     
+    def showForFilm
+        film = Film.find(params[:id])
+        reviews = film.reviews
+        render json: reviews, status: :ok
+    end
+
     private
     def find_comment 
         id = Review.find_by(id: params[:id])

@@ -10,6 +10,8 @@ Rails.application.routes.draw do
 
   post "/signup", to: "users#create"
   get "/authorized_user", to: "users#show"
+
+  get "/films/reviews/:id", to: "reviews#showForFilm"
   # destroy "/logout", to: "sessions#logout"
 
   

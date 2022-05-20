@@ -30,7 +30,7 @@ function App() {
         }
       });
   }, [])
-  console.log("loopdy loop")
+  
   if (!user) return <Login
     onLogin={setUser}
     name={name}
