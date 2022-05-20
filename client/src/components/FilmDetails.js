@@ -4,11 +4,11 @@ import {useState, useEffect} from 'react';
 import SubmitComments from './SubmitComments.js'
 import CommentContainer from './CommentContainer.js'
 
-function FilmDetails({newComment, setNewComment, user}){
+function FilmDetails({user}){
     const [currentFilm, setCurrentFilm] = useState('')
     const {id} = useParams();
     const [reviews, setReviews]= useState([])
-    const [reviewsChanged, setReviewsChanged] = useState(false)
+    const [reviewsChanged, setReviewsChanged] = useState(false);
 
     function refreshReviews() {
       setReviewsChanged(!reviewsChanged)
@@ -31,27 +31,6 @@ function FilmDetails({newComment, setNewComment, user}){
       refreshReviews()
     }
 
-  function handleAddComment(newComment, film_id) {
-    console.log(newComment)
-    console.log(user['id'])
-    console.log(film_id)
-    console.log(newComment)
-    fetch('/user_join_films', {
-      method: 'POST',
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-        film_id: film_id,
-        user_id: user['id'],
-        comment: newComment,
-        rating: 0
-      })
-    }).then(refreshReviews)
-    setNewComment("")
-  }
-
-
     return(
         <div className="film-detail">
           <h1>{currentFilm.title}</h1>
@@ -64,7 +43,7 @@ function FilmDetails({newComment, setNewComment, user}){
           <p>Release Date: {currentFilm.release_date}</p>
           <p>Run Time: {currentFilm.running_time}</p>
           <h1>COMMENTS</h1>
-          <SubmitComments user={user} handleAddComment={handleAddComment} film_id={currentFilm.id} key={currentFilm.id} newComment={newComment} setNewComment={setNewComment}/>
+          <SubmitComments user={user} film_id={currentFilm.id} key={currentFilm.id} refreshReviews={refreshReviews}/>
           <CommentContainer id={1} reviews={reviews} handleDeleteComment={handleDeleteComment} />         
         </div>
         

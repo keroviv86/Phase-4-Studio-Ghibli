@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   
-  resources :user_join_films
+  resources :reviews
   resources :films
   resources :users
   # resources :sessions

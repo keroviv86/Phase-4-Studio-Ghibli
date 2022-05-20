@@ -3,7 +3,7 @@ class FilmSerializer < ActiveModel::Serializer
    :running_time, :rt_score, :people, :species, :reviews
 
   def reviews
-    object.user_join_films.collect do |review|
+    object.reviews.collect do |review|
       {:id => review.id, :user_name => review.user.name, :comment => review.comment, :rating => review.rating}
     end
   end

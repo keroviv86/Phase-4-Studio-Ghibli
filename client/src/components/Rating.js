@@ -10,7 +10,7 @@ function Rating({review, reviewRating, handleChangeRating}) {
 
     function handSubmit(e){
         e.preventDefault();
-        fetch(`/user_join_films/${review.id}`, {
+        fetch(`/reviews/${review.id}`, {
             method: "PATCH",
             headers: {
                 "Content-Type": "application/json",
@@ -22,9 +22,6 @@ function Rating({review, reviewRating, handleChangeRating}) {
         .then((r) => r.json())
     }
     
-
-
-
     let ratingButtons = []
 
     for(let i = 0; i < rating; i++) {
@@ -38,10 +35,7 @@ function Rating({review, reviewRating, handleChangeRating}) {
     return (
         <div>
         <form onSubmit={handSubmit}>
-        
-                {ratingButtons}
-            
-       
+                {ratingButtons}      
         <button
             className= "submit"
             type='submit'

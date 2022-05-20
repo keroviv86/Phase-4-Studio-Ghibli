@@ -4,18 +4,14 @@ import Comment from './Comment.js'
 function CommentContainer({reviews, handleDeleteComment}){
     // const [reviewsModified, setReviewsModified] = useState(false);
     function handleChangeRating(rating, id) {
-        console.log(reviews)
-        console.log(rating, id)
-        
-        console.log("handling rating change")
-        // console.log(review.rating)
-        // console.log(review.id)
+
     }
+
     function onHandleDeleteComment(id) {
-        fetch(`/user_join_films/${id}`, {
+        fetch(`/reviews/${id}`, {
           method: "DELETE",
           headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json' 
           }
         })
         handleDeleteComment(id)

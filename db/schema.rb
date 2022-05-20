@@ -36,15 +36,15 @@ ActiveRecord::Schema.define(version: 2022_03_03_221439) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "user_join_films", force: :cascade do |t|
+  create_table "reviews", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "film_id", null: false
     t.string "comment"
     t.integer "rating"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["film_id"], name: "index_user_join_films_on_film_id"
-    t.index ["user_id"], name: "index_user_join_films_on_user_id"
+    t.index ["film_id"], name: "index_reviews_on_film_id"
+    t.index ["user_id"], name: "index_reviews_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -56,6 +56,6 @@ ActiveRecord::Schema.define(version: 2022_03_03_221439) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  add_foreign_key "user_join_films", "films"
-  add_foreign_key "user_join_films", "users"
+  add_foreign_key "reviews", "films"
+  add_foreign_key "reviews", "users"
 end
