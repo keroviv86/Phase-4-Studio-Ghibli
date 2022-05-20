@@ -43,8 +43,8 @@ function FilmDetails({user}){
           <p>Release Date: {currentFilm.release_date}</p>
           <p>Run Time: {currentFilm.running_time}</p>
           <h1>COMMENTS</h1>
-          <SubmitComments user={user} film_id={currentFilm.id} key={currentFilm.id} refreshReviews={refreshReviews}/>
           <CommentContainer id={1} reviews={reviews} handleDeleteComment={handleDeleteComment} />         
+          <SubmitComments user={user} film_id={currentFilm.id} key={currentFilm.id} refreshReviews={refreshReviews}/>
         </div>
         
     )
