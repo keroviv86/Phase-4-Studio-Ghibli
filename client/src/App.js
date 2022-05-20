@@ -17,10 +17,6 @@ function App() {
   const [user, setUser] = useState(null);
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
-  const [film, setFilm] = useState([])
-  const [searchFilm, setSearchFilm] = useState("")
-  // const [reviewsModified, setReviewsModified] = useState(false);
-  const [newComment, setNewComment]= useState('')
 
   useEffect(() => {
     fetch("/authorized_user")
@@ -33,49 +29,8 @@ function App() {
             });
         }
       });
-
-    fetch('/films')
-      .then(res => res.json())
-      .then(data => setFilm(data))
   }, [])
-
-  const allFilms = [...film]
-    .filter((items) => {
-      return items.title.toLowerCase().includes(searchFilm.toLowerCase());
-    })
-
-
-  // function handleAddComment(newComment, film_id) {
-  //   console.log(newComment)
-  //   console.log(user['id'])
-  //   console.log(film_id)
-  //   fetch('/user_join_films', {
-  //     method: 'POST',
-  //     headers: {
-  //       "Content-Type": "application/json"
-  //     },
-  //     body: JSON.stringify({
-  //       film_id: film_id,
-  //       user_id: user['id'],
-  //       comment: newComment,
-  //       rating: 0
-  //     })
-  //   })
-  // }
-
-
-
-  // function handleRemoveReview(id) {
-  //   fetch(`/user_join_films/${id}`, {
-  //     method: "DELETE",
-  //     headers: {
-  //       'Content-Type': 'application/json'
-  //     }
-  //   }).then(setReviewsModified(!reviewsModified))
-  // }
-
-
-
+  
   if (!user) return <Login
     onLogin={setUser}
     name={name}
@@ -99,9 +54,9 @@ function App() {
           setIsAuthenticated={setIsAuthenticated}
         />} />
         <Route path="/comment/:id" element={<FullComments />} />
-        <Route path="/films/:id" element={<FilmDetails user={user}  username={name} newComment={newComment} setNewComment = {setNewComment} />} />
+        <Route path="/films/:id" element={<FilmDetails user={user}  username={name} />} />
         <Route path="/home" element={<Home name={name} user={user} />} />
-        <Route path="/films" element={<FilmContainer allFilms={allFilms} setSearchFilm={setSearchFilm} />} />
+        <Route path="/films" element={<FilmContainer />} />
 
       </Routes>
       {/* {isAuthenticated? <p>Welcome </p>: <p>please log in</p>} */}

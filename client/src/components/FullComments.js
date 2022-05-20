@@ -6,7 +6,7 @@ function FullComments(){
     const [comment, setComment] = useState('')
     const {id} = useParams();
     useEffect(() => {
-        fetch(`/user_join_films/${id}`)
+        fetch(`/reviews/${id}`)
           .then((r) => r.json())
           .then((data) => {
             setComment(data);

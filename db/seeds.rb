@@ -34,5 +34,5 @@ rest_client_array.each do |film|
 end
 
 
-UserJoinFilm.create(film_id: 1, user_id: 1, comment: "Great movie", rating: 8)
-UserJoinFilm.create(film_id: 2, user_id: 1, comment: "perfect", rating: 9)
+Review.create(film_id: 1, user_id: 1, comment: "Great movie", rating: 8)
+Review.create(film_id: 2, user_id: 1, comment: "perfect", rating: 9)

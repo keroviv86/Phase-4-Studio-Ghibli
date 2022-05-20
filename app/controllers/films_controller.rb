@@ -7,6 +7,7 @@ class FilmsController < ApplicationController
         film = Film.find_by(id: params[:id])
         render json: film, status: :ok
     end
+
 end
    # require 'rest-client'
     # def index

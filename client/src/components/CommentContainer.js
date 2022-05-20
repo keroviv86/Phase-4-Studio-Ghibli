@@ -1,36 +1,48 @@
-import React, {useState} from 'react';
-import Comment from './Comment.js'
+import React, { useEffect, useState } from "react";
+import Comment from "./Comment.js";
+import SubmitComments from "./SubmitComments.js";
 
-function CommentContainer({reviews, handleDeleteComment}){
-    // const [reviewsModified, setReviewsModified] = useState(false);
-    function handleChangeRating(rating, id) {
-        console.log(reviews)
-        console.log(rating, id)
-        
-        console.log("handling rating change")
-        // console.log(review.rating)
-        // console.log(review.id)
-    }
-    function onHandleDeleteComment(id) {
-        fetch(`/user_join_films/${id}`, {
-          method: "DELETE",
-          headers: {
-            'Content-Type': 'application/json'
-          }
-        })
-        handleDeleteComment(id)
-      }
-    
+function CommentContainer({ user, film_id }) {
+  const [reviews, setReviews] = useState([]);
 
-    return(
-        <>
-          <ul>
-          {reviews.map((review)=> (
-                <Comment review={review} handleDeleteComment={onHandleDeleteComment} handleChangeRating={handleChangeRating}/>
-            ))} 
-          </ul> 
-        </>
-    )
+  useEffect(() => {
+    fetch(`/films/reviews/${film_id}`)
+      .then((res) => res.json())
+      .then((data) => setReviews(data));
+  }, [film_id]);
+
+  function onHandleDeleteComment(id) {
+    fetch(`/reviews/${id}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    setReviews(reviews.filter((review) => review.id !== id));
+  }
+
+  function addNewReview(newReview) {
+    setReviews([...reviews, newReview])
+  }
+
+  return (
+    <>
+      <ul>
+        {reviews.map((review) => (
+          <Comment
+            review={review}
+            handleDeleteComment={onHandleDeleteComment}
+            key={review.id}
+          />
+        ))}
+      </ul>
+      <SubmitComments
+        user={user}
+        film_id={film_id}
+        addNewReview={addNewReview}
+      />
+    </>
+  );
 }
 
 export default CommentContainer;

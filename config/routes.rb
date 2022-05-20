@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   
-  resources :user_join_films
+  resources :reviews
   resources :films
   resources :users
   # resources :sessions
@@ -10,6 +10,8 @@ Rails.application.routes.draw do
 
   post "/signup", to: "users#create"
   get "/authorized_user", to: "users#show"
+
+  get "/films/reviews/:id", to: "reviews#showForFilm"
   # destroy "/logout", to: "sessions#logout"
 
   

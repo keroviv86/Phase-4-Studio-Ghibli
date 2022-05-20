@@ -1,9 +1,7 @@
-class UserJoinFilmsController < ApplicationController
-
-    
+class ReviewsController < ApplicationController
 
     def index
-        render json: UserJoinFilm.all, status: :ok
+        render json: Review.all, status: :ok
     end
 
     def show
@@ -12,25 +10,31 @@ class UserJoinFilmsController < ApplicationController
     end
 
     def create
-        review = UserJoinFilm.create!(join_params)
-        render json: render, status: :created
+        review = Review.create!(join_params)
+        render json: review, status: :created
     end
 
     def destroy
-        comment = UserJoinFilm.find(params[:id])
+        comment = Review.find(params[:id])
         comment.destroy
         head :no_content
     end
 
     def update
-        rating = UserJoinFilm.find(params[:id])
+        rating = Review.find(params[:id])
         rating.update!(rating_param)
         render json: rating, status: :ok
     end
     
+    def showForFilm
+        film = Film.find(params[:id])
+        reviews = film.reviews
+        render json: reviews, status: :ok
+    end
+
     private
     def find_comment 
-        id = UserJoinFilm.find_by(id: params[:id])
+        id = Review.find_by(id: params[:id])
     end
     def join_params
         params.permit(:user_id, :film_id, :comment, :rating)
