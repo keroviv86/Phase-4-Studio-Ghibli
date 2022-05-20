@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import {generateRatingButtons} from "./Rating";
 
 function Comment({ review, handleDeleteComment }) {
   // function handleChangeRating(rating) {
@@ -11,6 +12,8 @@ function Comment({ review, handleDeleteComment }) {
   //     // console.log(review.id)
 
   // }
+  let ratingButtons = generateRatingButtons(review.rating, () => {})
+
   return (
     <>
       <br />
@@ -21,6 +24,10 @@ function Comment({ review, handleDeleteComment }) {
           Read Full Review
         </Link>
         <button onClick={() => handleDeleteComment(review.id)}>X</button>
+        <br/>
+        <br/>
+        {ratingButtons}
+
       </p>
     </>
   );

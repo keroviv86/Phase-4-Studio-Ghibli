@@ -1,34 +1,29 @@
 import { React } from "react";
 
 function Rating({ reviewRating, setReviewRating }) {
-  function changeRating(newRating) {
-    setReviewRating(newRating);
-  }
+  let buttons = generateRatingButtons(reviewRating, setReviewRating);
 
-  function generateRatingButtons() {
+  return <div>{buttons}</div>;
+}
+
+export function generateRatingButtons(rating, onClick) {
     let ratingButtons = [];
 
-    for (let i = 0; i < reviewRating; i++) {
+    for (let i = 0; i < rating; i++) {
       ratingButtons.push(
-        <button className="like" onClick={() => changeRating(i + 1)} key={i}>
+        <button className="like" onClick={()=>onClick(i + 1)} key={i}>
           ❤️
         </button>
       );
     }
 
-    for (let i = reviewRating; i < 10; i++) {
+    for (let i = rating; i < 10; i++) {
       ratingButtons.push(
-        <button className="dislike" onClick={() => changeRating(i + 1)} key={i}>
+        <button className="dislike" onClick={() => onClick(i + 1)} key={i}>
           ♡
         </button>
       );
     }
     return ratingButtons;
   }
-
-  let buttons = generateRatingButtons();
-
-  return <div>{buttons}</div>;
-}
-
 export default Rating;

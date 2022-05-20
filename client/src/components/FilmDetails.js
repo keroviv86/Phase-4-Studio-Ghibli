@@ -27,7 +27,7 @@ function FilmDetails({user}){
           <p>Release Date: {currentFilm.release_date}</p>
           <p>Run Time: {currentFilm.running_time}</p>
           <h1>REVIEWS</h1>
-          <CommentContainer user={user} film_id={1} />         
+          <CommentContainer user={user} film_id={id} />         
         </div>
         
     )

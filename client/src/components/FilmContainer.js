@@ -9,7 +9,6 @@ function FilmContainer() {
     fetch("/films")
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
         setFilms(data);
       });
   }, []);
