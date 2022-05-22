@@ -3,15 +3,7 @@ import { Link } from "react-router-dom";
 import {generateRatingButtons} from "./Rating";
 
 function Comment({ review, handleDeleteComment }) {
-  // function handleChangeRating(rating) {
-  //     console.log(review)
-  //     console.log(rating.id)
 
-  //     console.log("handling rating change")
-  //     // console.log(review.rating)
-  //     // console.log(review.id)
-
-  // }
   let ratingButtons = generateRatingButtons(review.rating, () => {})
 
   return (
