@@ -19,7 +19,6 @@ function Comment({ review, handleDeleteComment }) {
         <br/>
         <br/>
         {ratingButtons}
-
       </p>
     </>
   );
