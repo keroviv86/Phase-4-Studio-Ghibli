@@ -5,8 +5,7 @@ import SignUpForm from "./SignUpForm";
 
 function Login({ onLogin, name, setName, password, setPassword, setIsAuthenticated }) {
   const [showLogin, setShowLogin] = useState(true);
-  // const [name, setName] = useState("");
-  // const [password, setPassword] = useState("");
+
 
   return (
     <div>
