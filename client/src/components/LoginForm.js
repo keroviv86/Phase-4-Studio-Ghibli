@@ -1,7 +1,6 @@
 import React, {useState} from 'react'
 function LoginForm({ onLogin, name, setName, password, setPassword, setIsAuthenticated }) {
-  // const [name, setName] = useState("");
-  // const [password, setPassword] = useState("");
+  
   const [errors, setErrors] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
