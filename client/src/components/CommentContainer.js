@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Comment from "./Comment.js";
-import SubmitComments from "./SubmitComments.js";
+import SubmitComments from "../SubmitComments.js";
 
 function CommentContainer({ user, film_id }) {
   const [reviews, setReviews] = useState([]);

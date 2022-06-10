@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import Rating from "./Rating.js";
+import Rating from "./components/Rating.js";
 
 function SubmitComments({user, film_id, addNewReview}){
     const [newComment, setNewComment]= useState('')

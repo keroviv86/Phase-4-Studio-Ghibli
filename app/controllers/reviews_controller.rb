@@ -20,11 +20,11 @@ class ReviewsController < ApplicationController
         head :no_content
     end
 
-    def update
-        rating = Review.find(params[:id])
-        rating.update!(rating_param)
-        render json: rating, status: :ok
-    end
+    # def update
+    #     rating = Review.find(params[:id])
+    #     rating.update!(rating_param)
+    #     render json: rating, status: :ok
+    # end
     
     def showForFilm
         film = Film.find(params[:id])
